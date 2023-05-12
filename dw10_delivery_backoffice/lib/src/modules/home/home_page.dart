@@ -16,42 +16,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with Loader, Messages {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          showLoader();
-          await Future.delayed(const Duration(seconds: 1));
-          hideLoader();
-
-          showError('Mensagem de erro');
-        },
-        child: const Icon(Icons.update),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            Env.instance.get('backend_base_url'),
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          Text(
-            'Width: ${context.screenWidth}',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          Container(
-            color: context.colors.primary,
-            width: context.percentWidth(.2),
-            height: context.percentHeight(.2),
-          ),
-          Container(
-            color: context.colors.secondary,
-            width: context.percentWidth(.2),
-            height: context.percentHeight(.2),
-          )
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          Env.instance.get('backend_base_url'),
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        Text(
+          'Width: ${context.screenWidth}',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        Container(
+          color: context.colors.primary,
+          width: context.percentWidth(.2),
+          height: context.percentHeight(.2),
+        ),
+        Container(
+          color: context.colors.secondary,
+          width: context.percentWidth(.2),
+          height: context.percentHeight(.2),
+        )
+      ],
     );
   }
 }
