@@ -27,21 +27,21 @@ mixin _$ProductDetailController on ProductDetailControllerBase, Store {
     });
   }
 
-  late final _$_erroMessageAtom =
-      Atom(name: 'ProductDetailControllerBase._erroMessage', context: context);
+  late final _$_errorMessageAtom =
+      Atom(name: 'ProductDetailControllerBase._errorMessage', context: context);
 
-  String? get erroMessage {
-    _$_erroMessageAtom.reportRead();
-    return super._erroMessage;
+  String? get errorMessage {
+    _$_errorMessageAtom.reportRead();
+    return super._errorMessage;
   }
 
   @override
-  String? get _erroMessage => erroMessage;
+  String? get _errorMessage => errorMessage;
 
   @override
-  set _erroMessage(String? value) {
-    _$_erroMessageAtom.reportWrite(value, super._erroMessage, () {
-      super._erroMessage = value;
+  set _errorMessage(String? value) {
+    _$_errorMessageAtom.reportWrite(value, super._errorMessage, () {
+      super._errorMessage = value;
     });
   }
 
@@ -63,6 +63,24 @@ mixin _$ProductDetailController on ProductDetailControllerBase, Store {
     });
   }
 
+  late final _$_productModelAtom =
+      Atom(name: 'ProductDetailControllerBase._productModel', context: context);
+
+  ProductModel? get productModel {
+    _$_productModelAtom.reportRead();
+    return super._productModel;
+  }
+
+  @override
+  ProductModel? get _productModel => productModel;
+
+  @override
+  set _productModel(ProductModel? value) {
+    _$_productModelAtom.reportWrite(value, super._productModel, () {
+      super._productModel = value;
+    });
+  }
+
   late final _$uploadImageProductAsyncAction = AsyncAction(
       'ProductDetailControllerBase.uploadImageProduct',
       context: context);
@@ -79,6 +97,23 @@ mixin _$ProductDetailController on ProductDetailControllerBase, Store {
   @override
   Future<void> save(String name, double price, String description) {
     return _$saveAsyncAction.run(() => super.save(name, price, description));
+  }
+
+  late final _$loadProductAsyncAction =
+      AsyncAction('ProductDetailControllerBase.loadProduct', context: context);
+
+  @override
+  Future<void> loadProduct(int? id) {
+    return _$loadProductAsyncAction.run(() => super.loadProduct(id));
+  }
+
+  late final _$deleteProductAsyncAction = AsyncAction(
+      'ProductDetailControllerBase.deleteProduct',
+      context: context);
+
+  @override
+  Future<void> deleteProduct() {
+    return _$deleteProductAsyncAction.run(() => super.deleteProduct());
   }
 
   @override
